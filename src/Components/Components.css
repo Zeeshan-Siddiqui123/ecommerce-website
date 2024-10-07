@@ -1,0 +1,243 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+    border-bottom: 2px solid red;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    transition: background-color 0.3s;
+}
+
+.login-btn {
+    display: none;
+}
+
+.main-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav h1 {
+    color: rgb(13, 13, 13);
+    font-size: 24px;
+}
+
+.toggle-close,
+.toggle-btn {
+    display: none;
+    /* Hidden by default */
+}
+
+nav .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: visibility 0.3s;
+    visibility: visible;
+}
+
+.nav-linkss {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: visibility 0.3s;
+    display: none;
+}
+
+.nav-link-cart {
+    text-decoration: none;
+    color: rgb(14, 14, 14);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgb(14, 14, 14);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+.login-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.login-name-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 320px) {
+    .footer-input {
+        width: 150px !important;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        transition: visibility 0.3s;
+        visibility: visible;
+        flex-direction: column;
+    }
+
+    .nav-link {
+        display: none;
+    }
+
+    .nav-linkss {
+        display: block;
+        text-decoration: none;
+        color: rgb(14, 14, 14);
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .nav-linkss:hover {
+        color: red;
+    }
+
+    .toggle-btn {
+        display: block;
+        cursor: pointer;
+    }
+
+    .footer-input {
+        width: 250px !important;
+    }
+
+    .subscribe {
+        width: 115px;
+    }
+
+    .form {
+        display: flex;
+        gap: 0.5rem !important;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .login-button {
+        display: none;
+    }
+    .hello{
+        display: none;
+    }
+    .login-name-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        /* margin-top: 60px; */
+        padding: 5px 5px;
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .login-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        display: block;
+    }
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+}
+
+.subscription {
+    width: 100%;
+    height: 300px;
+    background-image: linear-gradient(to bottom right, rgba(182, 222, 250, 0.411), rgba(249, 84, 84, 0.329));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.f-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.inp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-input {
+    border: 1px solid rgb(52, 51, 51);
+    border-radius: 30px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    width: 400px;
+}
+
+.footer-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+@media screen and (max-width: 1440px) {
+    nav .nav-links div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: rgb(14, 14, 14);
+    }
+}
