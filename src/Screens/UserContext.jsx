@@ -1,30 +1,29 @@
-// src/Contexts/UserContext.jsx
+
 import React, { createContext, useState, useEffect } from 'react';
 
-// Create the UserContext
+// Create a context for user information
 export const UserContext = createContext();
 
-// Create a Provider Component
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Load user data from localStorage when the provider mounts
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) {
-      setUser(storedUser);
+    // Retrieve user from localStorage if logged in
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (loggedInUser) {
+      setUser(loggedInUser);
     }
   }, []);
 
-  
+  // Function to handle login and update context + localStorage
   const handleLogin = (userData) => {
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('loggedInUser', JSON.stringify(userData));
     setUser(userData);
   };
 
-
+  // Function to handle logout
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('loggedInUser');
     setUser(null);
   };
 
@@ -34,3 +33,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+export default UserProvider;

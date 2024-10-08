@@ -1,8 +1,7 @@
 // src/Screens/Login.jsx
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Modal } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-// import 'antd/dist/reset.css'; // Ensure Ant Design styles are imported
 import { UserContext } from '../Screens/UserContext';
 
 const Login = () => {
@@ -56,23 +55,35 @@ const Login = () => {
 
     setError("");
 
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
     if (currState === "Sign Up") {
+      const userExists = users.some(user => user.email === formData.email);
+      if (userExists) {
+        setError("Email is already registered");
+        return;
+      }
+
+      users.push(formData);
+      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('loggedInUser', JSON.stringify(formData));
       handleLogin(formData); // Update global user state
       setModalMessage("Account Created Successfully");
       setModalVisible(true);
       setFormData({ name: '', email: '', password: '' }); // Clear form inputs
       setAgree(false); // Reset agreement checkbox
-      navigate('/'); // Redirect to home after signup
+      navigate('/');
     }
 
     if (currState === "Login") {
-      const storedUser = JSON.parse(localStorage.getItem('user'));
-      if (storedUser && storedUser.email === formData.email && storedUser.password === formData.password) {
+      const storedUser = users.find(user => user.email === formData.email && user.password === formData.password);
+      if (storedUser) {
+        localStorage.setItem('loggedInUser', JSON.stringify(storedUser));
         handleLogin(storedUser); // Update global user state
         setModalMessage("Login Successful");
         setModalVisible(true);
         setFormData({ name: '', email: '', password: '' }); // Clear form inputs
-        navigate('/'); // Redirect to home after login
+        navigate('/');
       } else {
         setError("Invalid email or password");
         return;
@@ -82,7 +93,7 @@ const Login = () => {
 
   const handleModalClose = () => {
     setModalVisible(false);
-    // Optionally, you can navigate to another page or reset form here
+    navigate('/'); // Optionally, navigate after modal closes
   };
 
   return (

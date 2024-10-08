@@ -1,5 +1,5 @@
 // src/Components/Navbar.jsx
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import './Components.css';
 import { Link } from 'react-router-dom';
 import { routes } from '../Routes';
@@ -10,10 +10,8 @@ import { UserContext } from '../Screens/UserContext.jsx';
 import { CartContext } from '../Screens/CartContext.jsx';
 
 const Navbar = () => {
-  // const [user, setUser] = useState(null);
-  const { user, handleLogout } = useContext(UserContext);
+  const { user, handleLogout } = useContext(UserContext);  // Use context for user and logout
   const { cart } = useContext(CartContext);
-
 
   return (
     <nav className="navbar">
@@ -29,24 +27,27 @@ const Navbar = () => {
         ))}
       </div>
       <div className='flex flex-row gap-1'>
-        
         <Link to="/cart" className='nav-link-cart'>
           <MdOutlineShoppingCart size='30' />
-
         </Link>
         <div className='w-[20px] h-[20px] bg-[red] text-white rounded-full text-center -ml-3 -mt-1'>{cart.length}</div>
+
+        {/* Check if user is logged in */}
         {user ? (
-          <div className='flex items-center space-x-2 '>
-            
-              <div className='login-name-btn'><span className='hello'>Hello,</span> {user.name}</div>
-            
-            <div><button onClick={handleLogout} className='login-button'>Logout</button></div>
+          <div className='flex items-center space-x-2'>
+            <div className='login-name-btn'>
+              <span className='hello'>Hello,</span> {user.name} {/* Display user's name */}
+            </div>
+            <div>
+              <button onClick={handleLogout} className='login-button'>Logout</button>
+            </div>
           </div>
         ) : (
           <Link to="/account" className='login-button'>
             <b>Log in/Sign Up</b>
           </Link>
         )}
+
         <div className='toggle-btn'>
           <Toggle />
         </div>
