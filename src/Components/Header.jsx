@@ -34,13 +34,13 @@ const Navbar = () => {
           <MdOutlineShoppingCart size='30' />
 
         </Link>
-        ({cart.length})
+        <div className='w-[20px] h-[20px] bg-[red] text-white rounded-full text-center -ml-3 -mt-1'>{cart.length}</div>
         {user ? (
-          <div className='flex items-center space-x-2'>
-            <Link to="/account" className='login-name-btn'>
-              <span className='hello'>Hello,</span> {user.name}
-            </Link>
-            <button onClick={handleLogout} className='login-button'>Logout</button>
+          <div className='flex items-center space-x-2 '>
+            
+              <div className='login-name-btn'><span className='hello'>Hello,</span> {user.name}</div>
+            
+            <div><button onClick={handleLogout} className='login-button'>Logout</button></div>
           </div>
         ) : (
           <Link to="/account" className='login-button'>
