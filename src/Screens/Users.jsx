@@ -52,18 +52,7 @@ const Users = () => {
                     // console.log(value, record, index);
                     return <Link to={`/posts?userId=${record.id}`}>Posts</Link>;
                 }
-            }, {
-                title: 'TODOS',
-                key: 'todos',
-                render: (value, record, index) => {
-                    return <Link to={`/todos?userId=${record.id}`}>Todos</Link>;
-                }
-            },
-                {
-                    title: 'ALBUMS',
-                    key: 'albums',
-                    render: (value, record, index) => <Link to={`/albums?userId=${record.id}`}>Albums</Link>
-                })
+            }, )
             setColumns(columns)
         }
     }, [data])
@@ -81,7 +70,7 @@ const Users = () => {
         />
     }
     return (
-        <Table
+        <Table className='mt-16'
             columns={columns}
             dataSource={data}
             bordered
