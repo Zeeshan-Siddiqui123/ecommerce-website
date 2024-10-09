@@ -112,5 +112,3 @@ export const {
     useAddPostMutation,
     useUpdatePostMutation, useDeletePostMutation
 } = jsonServerApi
-
-

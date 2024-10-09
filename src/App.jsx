@@ -7,10 +7,13 @@ import Login from './Screens/Login';
 import ProductDetails from './Screens/ProductDetails';
 import Products from './Screens/Products';
 import Navbar from './Components/Header';
+import { Provider } from 'react-redux';
+import { store } from './store'
 
 const App = () => {
   return (
     <div>
+      <Provider store={store}>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -26,6 +29,7 @@ const App = () => {
         </Routes>
         <Footer />
       </BrowserRouter>
+      </Provider>
     </div>
   );
 };
