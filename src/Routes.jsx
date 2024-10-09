@@ -2,6 +2,8 @@ import Index from "./Screens/Index";
 import About from "./Screens/About";
 import Products from "./Screens/Products";
 import Contact from "./Screens/Contact";
+import Users from "./Screens/Users";
+
 
 export const routes = [
     {
@@ -23,5 +25,10 @@ export const routes = [
         path: "/contact",
         screen: <Contact/>,
         label: "Contact",
+    },
+    {
+        path: "/user",
+        screen: <Users/>,
+        label: "Users",
     },
 ]

@@ -17,10 +17,10 @@ const Login = () => {
   const [modalMessage, setModalMessage] = useState("");
   const navigate = useNavigate();
 
-  // Consume the UserContext
+  
   const { handleLogin } = useContext(UserContext);
 
-  // Handle Input Change:
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -28,11 +28,11 @@ const Login = () => {
     });
   };
 
-  // Handle form validation and Submission:
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic Validation:
+  
     if (!formData.email || !formData.password || (currState === 'Sign Up' && !formData.name)) {
       setError("All fields are required");
       return;
@@ -173,7 +173,7 @@ const Login = () => {
                 className="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
               <label htmlFor="agree" className="text-sm">
-                I agree to the <Link to="/terms" className="text-blue-500 underline">terms of use</Link> & <Link to="/privacy" className="text-blue-500 underline">privacy policy</Link>
+                I agree to the <Link className="text-blue-500 underline">terms of use</Link> & <Link  className="text-blue-500 underline">privacy policy</Link>
               </label>
             </div>
           )}

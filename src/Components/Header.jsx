@@ -1,7 +1,7 @@
 // src/Components/Navbar.jsx
 import React, { useContext } from 'react';
 import './Components.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { routes } from '../Routes';
 import { FaShopify } from 'react-icons/fa';
 import { MdOutlineShoppingCart } from 'react-icons/md';
@@ -21,9 +21,11 @@ const Navbar = () => {
       </div>
       <div className='nav-links'>
         {routes.map(({ path, label }, index) => (
-          <Link key={index} to={path} className='nav-link'>
+          <NavLink key={index} to={path} className={({ isActive}) =>
+            isActive ? 'text-[#f97070] underline font-bold nav-link' : 'text-black font-bold nav-link' 
+          }>
             {label}
-          </Link>
+          </NavLink>
         ))}
       </div>
       <div className='flex flex-row gap-1'>
@@ -32,7 +34,7 @@ const Navbar = () => {
         </Link>
         <div className='w-[20px] h-[20px] bg-[red] text-white rounded-full text-center -ml-3 -mt-1'>{cart.length}</div>
 
-        {/* Check if user is logged in */}
+        
         {user ? (
           <div className='flex items-center space-x-2'>
             <div className='login-name-btn'>
