@@ -115,8 +115,9 @@ const Posts = () => {
 
     return (
         <>
-            {userId &&
-                <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", margin: '1rem 0' }}>
+           <div className='mt-[80px]'>
+           {userId &&
+                <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", margin: '1rem 0' }} >
                     <Button type="primary" onClick={() => {
                         // openModal();
                         addPost({
@@ -143,6 +144,7 @@ const Posts = () => {
             <Modal width={1000} title="Comments" open={isModalOpen} onOk={hideModal} onCancel={hideModal}>
                 <Table bordered rowKey={(record) => record.id} dataSource={commentsData} loading={commentsIsLoading} columns={generateColumns(commentsData?.length > 0 && commentsData[0])} pagination={false} />
             </Modal>
+           </div>
         </>
     )
 }
