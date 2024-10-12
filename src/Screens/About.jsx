@@ -7,7 +7,7 @@ const About = () => {
         <h1 className="text-3xl font-bold text-center mb-4">About Us</h1>
         <hr className="border-gray-300 mb-6" />
         <p className="text-lg text-center text-gray-700 mb-4">
-          <b>Welcome to Shopper</b>, your one-stop destination for stylish and affordable fashion. We believe that everyone deserves to feel confident and look their best, no matter the occasion. That’s why we’ve curated a wide range of clothing for both MEN, WOMEN & also KIDS, designed to suit every style, preference, and budget.
+          <b>Welcome to Shopper</b>, your one-stop destination for stylish and affordable fashion. We believe that everyone deserves to feel confident and look their best, no matter the occasion. That’s why we’ve curated a wide range of clothing for both MEN, WOMEN ,JEWELRY & ELECTRONICS designed to suit every style, preference, and budget.
           <br />
           At <b>Shopper</b>, fashion is more than just trends—it’s about expressing yourself. Our collections are thoughtfully selected, keeping comfort, quality, and uniqueness in mind. From timeless classics to the latest trends, we offer everything from casual wear to statement pieces, ensuring you find something you love.
           <br />
