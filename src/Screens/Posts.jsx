@@ -30,22 +30,14 @@ const Posts = () => {
     const [addPost, { data: postData, error: postError, isLoading: postIsLoading, isSuccess: postIsSuccess, isError: postIsError }] = useAddPostMutation()
     const [updatePost,] = useUpdatePostMutation()
     const [deletePost,] = useDeletePostMutation()
-    // console.log({ data, error, isLoading, isSuccess, isError, userId });
-    // console.log({ commentsData, commentsError, commentsIsLoading });
-
+          
     useEffect(() => {
         getPosts(`?_page=${currentPage}&_per_page=${pageSize}${userId ? `&userId=${userId}` : ''}`)
     }, [userId, currentPage, pageSize])
 
     useEffect(() => {
         if (data) {
-            // const columns = Object.keys(data[0]).map((key) => {
-            //     return {
-            //         title: key.toUpperCase(),
-            //         dataIndex: key,
-            //         key: key,
-            //     }
-            // });
+            
             const columns = generateColumns(data?.data[0]);
             if (userId) {
                 columns.push({
