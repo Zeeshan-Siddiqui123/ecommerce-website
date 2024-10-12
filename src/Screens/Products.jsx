@@ -8,7 +8,6 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortOption, setSortOption] = useState('default');
 
@@ -23,7 +22,6 @@ const Products = () => {
         }
         const data = await response.json();
         setProducts(data);
-        setFilteredProducts(data);
       } catch (error) {
         console.error('Error fetching products:', error);
         message.error('Failed to load products. Please try again later.');
@@ -35,59 +33,56 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  // Sort products based on selected option
+  
   const sortProducts = (productsToSort) => {
-    if (sortOption === 'priceAsc') {
-      return [...productsToSort].sort((a, b) => a.price - b.price);
+    switch (sortOption) {
+      case 'priceAsc':
+        return [...productsToSort].sort((a, b) => a.price - b.price);
+      case 'priceDesc':
+        return [...productsToSort].sort((a, b) => b.price - a.price);
+      case 'nameAsc':
+        return [...productsToSort].sort((a, b) => a.title.localeCompare(b.title));
+      case 'nameDesc':
+        return [...productsToSort].sort((a, b) => b.title.localeCompare(a.title));
+      default:
+        return productsToSort; 
     }
-    if (sortOption === 'priceDesc') {
-      return [...productsToSort].sort((a, b) => b.price - a.price);
-    }
-    if (sortOption === 'nameAsc') {
-      return [...productsToSort].sort((a, b) => a.title.localeCompare(b.title));
-    }
-    if (sortOption === 'nameDesc') {
-      return [...productsToSort].sort((a, b) => b.title.localeCompare(a.title));
-    }
-    return productsToSort; // Default order (no sorting)
   };
 
-  // Apply both filter and sorting
+  
   const getProcessedProducts = () => {
     let processedProducts = products;
 
-    // Apply filtering
+
     if (selectedCategory !== 'all') {
       processedProducts = products.filter((product) => product.category === selectedCategory);
     }
 
-    // Apply sorting
-    processedProducts = sortProducts(processedProducts);
-
-    return processedProducts;
+  
+    return sortProducts(processedProducts);
   };
 
   const processedProducts = getProcessedProducts();
 
-  // Calculate the products for the current page
+  
   const indexOfLastProduct = currentPage * pageSize;
   const indexOfFirstProduct = indexOfLastProduct - pageSize;
   const currentProducts = processedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  // Pagination change handler
+  
   const onChangePage = (page) => {
     setCurrentPage(page);
   };
 
-  // Handle category filter change
+  
   const handleCategoryChange = (value) => {
     setSelectedCategory(value);
-    setCurrentPage(1); // Reset to first page when filter changes
+    setCurrentPage(1); 
   };
 
-  // Handle sorting change
   const handleSortChange = (value) => {
     setSortOption(value);
+    setCurrentPage(1); 
   };
 
   if (loading) {
@@ -98,32 +93,27 @@ const Products = () => {
     );
   }
 
-  if (processedProducts.length === 0) {
-    return (
-      <div className='flex items-center justify-center' style={{ height: '100vh' }}>
-        <h2>No products available for the selected filter.</h2>
-      </div>
-    );
-  }
+  
 
   return (
     <div>
       <header>
         <h1 className='text-center'>Our Products</h1>
       </header>
+
       
-      {/* Filter and Sort Controls */}
       <div className='flex items-center justify-center mt-4 gap-4'>
-        {/* Category Filter */}
+      
         <Select defaultValue="all" style={{ width: 200 }} onChange={handleCategoryChange}>
           <Option value="all">All Categories</Option>
           <Option value="electronics">Electronics</Option>
           <Option value="jewelery">Jewelery</Option>
           <Option value="men's clothing">Men's Clothing</Option>
           <Option value="women's clothing">Women's Clothing</Option>
+        
         </Select>
 
-        {/* Sorting Options */}
+      
         <Select defaultValue="default" style={{ width: 200 }} onChange={handleSortChange}>
           <Option value="default">Default</Option>
           <Option value="priceAsc">Price: Low to High</Option>
@@ -133,9 +123,9 @@ const Products = () => {
         </Select>
       </div>
 
-      {/* Product List */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "2rem", flexWrap: "wrap", marginTop: "2rem" }}>
-        {currentProducts.map(product => (
+      
+      <div className='flex items-center justify-center gap-8 flex-wrap mt-8'>
+        {currentProducts.map((product) => (
           <Card
             key={product.id}
             id={product.id}
@@ -147,7 +137,7 @@ const Products = () => {
         ))}
       </div>
 
-      {/* Pagination */}
+      
       <div className='flex items-center justify-center mt-6 mb-6'>
         <Pagination
           current={currentPage}
