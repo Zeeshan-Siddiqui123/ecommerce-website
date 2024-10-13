@@ -4,7 +4,7 @@ export const jsonServerApi = createApi({
     reducerPath: 'api',
 
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3000',
+        baseUrl: 'https://bramble-erratic-relish.glitch.me/',
         prepareHeaders: (headers, { getState }) => {
             // const token = getState().auth.token
             const token = localStorage.getItem('token')
