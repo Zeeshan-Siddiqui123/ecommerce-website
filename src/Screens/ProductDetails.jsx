@@ -46,16 +46,16 @@ const ProductDetails = () => {
   };
 
   const placeOrder = () => {
-    // Logic to handle placing the order (e.g., updating the order in a database or API)
+    
     setOrderPlaced(true);
     message.success('Your order has been placed successfully!');
 
-    // Reset states after placing the order
+    
     setAddress('');
-    setShowOrderButton(false); // Hide the order button
+    setShowOrderButton(false); 
     setTimeout(() => {
-      setOrderPlaced(false); // Hide confirmation message after a few seconds
-    }, 3000); // 3 seconds
+      setOrderPlaced(false); 
+    }, 3000); 
   };
 
   if (loading) {
@@ -117,8 +117,8 @@ const ProductDetails = () => {
             <span className='ml-2'>Order Now</span>
           </Button>
         </div>
-        {/* Address input */}
-        {/* Show order button if address is entered */}
+      
+      
         {showOrderButton && !orderPlaced && (
           <Button
             type='primary'
@@ -128,7 +128,7 @@ const ProductDetails = () => {
             Place Order
           </Button>
         )}
-        {/* Show confirmation message */}
+        
         {orderPlaced && (
           <div className='mt-4'>
             <p>Your order has been placed successfully!</p>
