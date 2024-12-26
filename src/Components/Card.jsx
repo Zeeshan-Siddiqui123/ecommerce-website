@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-imprt { MdOutlineShoppingCart } from 'react-icons/md';
+import { MdOutlineShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Screens/CartContext';
 import StarRating from './StarRating'; // Import StarRating if you wish to show the rating
