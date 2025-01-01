@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
-iport { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../Screens/CartContext';
 import StarRating from './StarRating'; // Import StarRating if you wish to show the rating
 
