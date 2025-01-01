@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Screens/CartContext';
-import StarRating from './StarRating'; // Import StarRating if you wish to show the rating
+imprt StarRating from './StarRating'; // Import StarRating if you wish to show the rating
 
 const Card = (props) => {
   const { id, image, description, price, product, rating } = props; // Ensure 'rating' is passed down if available
