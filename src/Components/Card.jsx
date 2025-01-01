@@ -1,4 +1,4 @@
-import t, { useContext } from 'react';
+import React, { useContext } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Screens/CartContext';
